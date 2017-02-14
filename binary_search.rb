@@ -1,27 +1,45 @@
 # Implements the binary search algorithm
+# Returns the position of the element found, otherwise returns -1
 
 min = 0
-max = 100_000
+max = 1_000_000
 mylist1 = (min..max).to_a
-mylist2 = min.step(max, 7).map { |i| i }
+mylist2 = min.step(max, 3).map { |i| i }
 target = mylist1.sample
 
-def binary_search(target, array)
-  if array.empty?
-    puts 'Target not present in the array'
-    return -1
-  end
+def binary_search(target, array, min, max)
+  return -1 if min > max
 
-  guess = array.size / 2
+  guess = min + (max - min) / 2
   value_guessed = array[guess]
 
-  return value_guessed if value_guessed == target
-
-  new_array = value_guessed < target ? array[guess + 1..-1] : array[0...guess]
-
-  binary_search(target, new_array)
+  return guess if value_guessed == target
+  return binary_search(target, array, guess + 1, max) if value_guessed < target
+  binary_search(target, array, min, guess - 1)
 end
 
 p target
-p binary_search(target, mylist1)
-p binary_search(target, mylist2)
+p binary_search(target, mylist1, 0, mylist1.size - 1)
+p binary_search(target, mylist2, 0, mylist2.size - 1)
+
+# Non-recursive algorithm:
+
+def binary_search2(target, array)
+  min = 0
+  max = array.size - 1
+
+  while min <= max
+    guess = min + (max - min) / 2
+    value_guessed = array[guess]
+
+    return guess if value_guessed == target
+
+    value_guessed < target ? min = guess + 1 : max = guess - 1
+  end
+
+  -1
+end
+
+# p binary_search2(10, [2, 3, 4, 10, 40])
+p binary_search2(target, mylist1)
+p binary_search2(target, mylist2)
