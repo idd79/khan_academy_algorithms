@@ -18,9 +18,30 @@ def binary_search(target, array, min, max)
   binary_search(target, array, min, guess - 1)
 end
 
+# Recursive algorithm with only two inputs: array and target
+def binary_search3(target, array)
+  min = 0
+  max = array.size - 1
+
+  recursive_search = lambda do |x, list, lb, ub|
+    return -1 if lb > ub
+
+    guess = lb + (ub - lb) / 2
+    value_guessed = list[guess]
+
+    return guess if value_guessed == x
+    return recursive_search.call(x, list, guess + 1, ub) if value_guessed < x
+    recursive_search.call(x, list, lb, guess - 1)
+  end
+
+  recursive_search.call(target, array, min, max)
+end
+
 p target
 p binary_search(target, mylist1, 0, mylist1.size - 1)
 p binary_search(target, mylist2, 0, mylist2.size - 1)
+p binary_search3(target, mylist1)
+p binary_search3(target, mylist2)
 
 # Non-recursive algorithm:
 
