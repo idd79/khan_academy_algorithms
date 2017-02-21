@@ -1,7 +1,5 @@
 # Swap between two elements in an array
 
-require 'pry'
-
 def swap(array, firstIndex, secondIndex)
   array[firstIndex], array[secondIndex] = array[secondIndex], array[firstIndex]
 

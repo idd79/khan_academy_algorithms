@@ -39,8 +39,8 @@ var index = indexOfMinimum(array, 2);
 //  the value 9 is the smallest of [..66, 44, 9, 22, 14]
 //  Since 9 is at index 4 in the original array, 
 //  "index" has value 4
-console.log("The index of the minimum value of the subarray starting at \
-            index 2 is " + index + "."  );
+console.log("The index of the minimum value of the subarray starting at " +
+            "index 2 is " + index + "."  );
 
 
 // Implement selection sort
