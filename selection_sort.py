@@ -4,7 +4,7 @@
 
 def swap(array, firstIndex, secondIndex):
     array[firstIndex], array[secondIndex] = array[secondIndex], \
-                                            array[firstIndex]
+        array[firstIndex]
     return array
 
 testArray = [7, 9, 4]
@@ -24,6 +24,7 @@ def indexOfMinimum(array, startIndex):
 
     return min_index
 
+
 print(indexOfMinimum([5, 4, 10, 9], 2))
 
 # Implement selection sort
@@ -35,6 +36,7 @@ def selectionSort(array):
         swap(array, i, index_min)
 
     return array
+
 
 print(selectionSort([7, 4, 3, 3, 1]))
 print(selectionSort(['Yusuf', 'Ivan']))
